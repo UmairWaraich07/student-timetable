@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Timetable</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cambria&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF0004",
+              dark: "#0F0F0F",
+              "home-economics": "#D049B2",
+              technology: "#42A846",
+              ethics: "#9E69FF",
+              mathematics: "#DE413E",
+              english: "#1792F5",
+              art: "#FF7043",
+              irish: "#8537CA",
+              history: "#C94814",
+              science: "#5C6BC0",
+              french: "#6A3ABE",
+              "religious-edu": "#64B5F6",
+              geography: "#10AFA0",
+              music: "#DA7D26",
+              drama: "#FF6B00",
+              rg: "",
+              "timetable-bg": "#1b1b1b",
+            },
+          },
+          fontFamily: {
+            cambria: ["Cambria", "serif"],
+            open: ['"Open Sans"', "sans-serif"],
+          },
+          backgroundImage: {
+            "hero-pattern": "url('assets/hero-bg.png')",
+            "hero-img": "url('assets/hero-img.png')",
+            "champion-pattern": "url('assets/champion-bg.png')",
+            "timetable-pattern": "url('assets/timetable-bg.png')",
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-dark text-white font-open max-w-[1440px] mx-auto">
+    <!-- Hero -->
+    <section class="relative h-full w-full">
+      <!-- Background Image with reduced opacity using ::before -->
+      <div
+        class="absolute inset-0 bg-hero-pattern bg-cover bg-center opacity-30 z-0"
+      ></div>
+
+      <!-- Main content of the hero section -->
+      <header
+        class="relative z-10 max-w-[1280px] px-14 max-lg:px-8 max-md:px-6 max-sm:px-4 py-5 max-sm:py-3 mx-auto w-full flex items-center justify-between"
+      >
+        <div class="flex items-center gap-2">
+          <img
+            src="assets/logo.svg"
+            alt="logo"
+            class="w-[44px] h-[52px] max-sm:w-[38px] max-sm:h-[45px] object-contain"
+          />
+          <div
+            class="font-cambria text-[24px] max-sm:text-[20px] -space-y-3 text-[#B3B3B3]"
+          >
+            <p>Doherty</p>
+            <p>Aidan</p>
+          </div>
+        </div>
+
+        <div class="flex max-sm:items-center gap-1">
+          <span
+            class="font-cambria text-base -space-y-2 sm:self-end text-[#B3B3B3]"
+          >
+            <p>A Champ</p>
+            <p>Timetable</p>
+          </span>
+          <img
+            src="assets/gold-cup.png"
+            alt="gold-cup"
+            class="w-[56px] h-[72px] max-sm:w-[40px] max-sm:h-[52px] object-contain"
+          />
+        </div>
+      </header>
+
+      <div
+        class="relative z-10 mt-10 px-14 max-lg:px-8 max-md:px-6 max-sm:px-0 mx-auto"
+      >
+        <div
+          class="w-full relative h-[550px] max-sm:h-[350px] bg-hero-img bg-center max-sm:bg-right bg-cover bg-no-repeat sm:rounded-[24px] overflow-hidden"
+        >
+          <div class="absolute bottom-0 p-10 max-lg:p-8 z-50 max-sm:hidden">
+            <h1
+              class="text-primary text-[48px] flex flex-col gap-2 font-bold font-cambria"
+            >
+              <span class="greeting"></span> <span class="-mt-6">Doherty!</span>
+            </h1>
+            <p class="text-[20px] z-50">
+              It's a brand-new <span class="day-of-week"></span>! <br />
+              Let's crush it and make today awesome!
+            </p>
+          </div>
+
+          <!-- bottom gradient -->
+          <div
+            class="absolute bottom-0 left-0 right-0 dark-gradient max-sm:mobile-dark-gradient h-[300px] max-sm:h-[200px] w-full"
+          ></div>
+
+          <!-- Hero Down arrow -->
+          <div class="w-full h-full flex justify-end p-10 max-lg:hidden">
+            <div class="arrow-bg rounded-full p-1.5 self-end">
+              <img
+                src="assets/arrow-down.svg"
+                alt="arrow-down"
+                class="w-[32px] h-[32px] object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile hero content -->
+      <div class="p-5 z-50 sm:hidden">
+        <h1
+          class="text-primary text-[48px] flex flex-col gap-2 font-bold font-cambria"
+        >
+          <span class="greeting"></span> <span class="-mt-6">Doherty!</span>
+        </h1>
+        <p class="text-[20px] z-50">
+          It's a brand-new <span class="day-of-week"></span>! <br />
+          Let's crush it and make today awesome!
+        </p>
+      </div>
+    </section>
+
+    <!-- Timetable 1 -->
+    <section
+      class="mt-16 max-w-[1280px] mx-auto px-14 max-lg:px-8 max-md:px-6 max-sm:px-0"
+    >
+      <h2 class="font-bold font-cambria text-[42px] max-sm:px-4">Week 1</h2>
+      <div class="mt-10 p-4 max-md:p-0">
+        <div class="grid grid-cols-5 gap-2 mb-2">
+          <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
+            Mon
+          </div>
+          <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
+            Tue
+          </div>
+          <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
+            Wed
+          </div>
+          <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
+            Thu
+          </div>
+          <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
+            Fri
+          </div>
+        </div>
+        <div class="flex items-center justify-center">
+          <div class="flex flex-col mr-2 space-y-[10px] max-md:hidden">
+            <div
+              class="flex items-center mb-[10px] justify-center text-[22px] max-md:text-base font-cambria font-medium h-[88px]"
+            >
+              RgA
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P1
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P2
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P3
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P4
+            </div>
+            <div
+              class="flex items-center justify-center mb-[10px] text-[22px] max-md:text-base font-medium font-cambria h-[88px]"
+            >
+              RgB
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P5
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P6
+            </div>
+          </div>
+          <div
+            id="timetable1"
+            class="selft-start bg-timetable-bg grid grid-cols-5 gap-x-3 max-lg:gap-x-2 max-sm:gap-x-[3px] gap-y-[10px] rounded-[32px] p-5 max-lg:p-3 max-md:py-4 flex-grow"
+          >
+            <!-- Timetable will be generated here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timetable 2 -->
+    <section
+      class="relative mt-16 max-w-[1280px] mx-auto px-14 max-lg:px-8 max-md:px-6 max-sm:px-0"
+    >
+      <div
+        class="absolute top-0 right-0 w-[500px] h-[400px] bg-champion-pattern opacity-50 bg-right bg-no-repeat z-[-1]"
+      ></div>
+      <h2 class="font-bold font-cambria text-[42px] max-sm:px-4">Week 2</h2>
+      <div class="mt-10 p-4 max-md:p-0">
+        <div class="grid grid-cols-5 gap-2 mb-2">
+          <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
+            Mon
+          </div>
+          <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
+            Tue
+          </div>
+          <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
+            Wed
+          </div>
+          <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
+            Thu
+          </div>
+          <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
+            Fri
+          </div>
+        </div>
+        <div class="flex items-center justify-center">
+          <div class="flex flex-col mr-2 space-y-[10px] max-md:hidden">
+            <div
+              class="flex items-center mb-[10px] justify-center text-[22px] max-md:text-base font-cambria font-medium h-[88px]"
+            >
+              RgA
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P1
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P2
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P3
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P4
+            </div>
+            <div
+              class="flex items-center justify-center mb-[10px] text-[22px] max-md:text-base font-medium font-cambria h-[88px]"
+            >
+              RgB
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P5
+            </div>
+            <div
+              class="flex items-center justify-center text-[22px] max-md:text-base font-medium h-[88px]"
+            >
+              P6
+            </div>
+          </div>
+          <div
+            id="timetable2"
+            class="selft-start bg-timetable-bg grid grid-cols-5 gap-x-3 max-lg:gap-x-2 max-sm:gap-x-[3px] gap-y-[10px] rounded-[32px] p-5 max-lg:p-3 max-md:py-4 flex-grow"
+          >
+            <!-- Timetable will be generated here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Champion section -->
+    <div class="pt-20 relative">
+      <div
+        class="max-w-[1280px] mx-auto px-14 max-lg:px-8 max-md:px-6 max-sm:px-4"
+      >
+        <div
+          class="mt-16 max-sm:mt-10 px-6 max-sm:px-5 max-md:pb-10 min-h-[230px] bg-primary flex max-md:flex-col max-md:gap-8 items-center justify-center rounded-t-[24px] overflow-hidden"
+        >
+          <img
+            src="assets/champion.png"
+            alt="champion"
+            class="h-[230px] object-cover object-top"
+          />
+          <h2
+            class="font-cambria text-[48px] leading-[54px] max-md:text-center font-bold"
+          >
+            A Good Luck From a Champion.
+          </h2>
+        </div>
+
+        <!-- Background image with reduced opacity -->
+        <div
+          class="absolute inset-0 w-full h-full bg-champion-pattern bg-bottom bg-right bg-no-repeat opacity-50 z-[-1]"
+        ></div>
+      </div>
+    </div>
+
+    <script>
+      const subjects = {
+        Economics: "bg-home-economics",
+        Technology: "bg-technology",
+        "Ethics & Phil.": "bg-ethics",
+        Mathematics: "bg-mathematics",
+        English: "bg-english",
+        Art: "bg-art",
+        Irish: "bg-irish",
+        History: "bg-history",
+        Science: "bg-science",
+        French: "bg-french",
+        "Religious Edu.": "bg-religious-edu",
+        Geography: "bg-geography",
+        Music: "bg-music",
+        Drama: "bg-drama",
+        Rg: "bg-rg",
+      };
+
+      const timetable = [
+        // RgA
+        [
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+        ],
+        // P1
+        [
+          { subject: "Economics", teacher: "Teacher Name", room: "52" },
+          { subject: "Technology", teacher: "Teacher Name", room: "29" },
+          { subject: "Ethics.", teacher: "Teacher Name", room: "61" },
+          { subject: "Math", teacher: "Teacher Name", room: "14" },
+          { subject: "Math", teacher: "Teacher Name", room: "14" },
+        ],
+        // P2
+        [
+          { subject: "English", teacher: "Teacher Name", room: "45A" },
+          { subject: "Art", teacher: "Teacher Name", room: "4" },
+          { subject: "Math", teacher: "Teacher Name", room: "14" },
+          { subject: "English", teacher: "Teacher Name", room: "45A" },
+          { subject: "Drama", teacher: "Teacher Name", room: "44A" },
+        ],
+        // P3
+        [
+          { subject: "Irish", teacher: "Teacher Name", room: "26" },
+          { subject: "English", teacher: "Teacher Name", room: "45A" },
+          { subject: "English", teacher: "Teacher Name", room: "45A" },
+          { subject: "History", teacher: "Teacher Name", room: "23" },
+          { subject: "Science", teacher: "Teacher Name", room: "34" },
+        ],
+        // P4
+        [
+          { subject: "Math", teacher: "Teacher Name", room: "14" },
+          { subject: "Science", teacher: "Teacher Name", room: "34" },
+          { subject: "Art", teacher: "Teacher Name", room: "4" },
+          { subject: "French", teacher: "Teacher Name", room: "47" },
+          { subject: "English", teacher: "Teacher Name", room: "45A" },
+        ],
+        // RgB
+        [
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+        ],
+        // P5
+        [
+          { subject: "French", teacher: "Teacher Name", room: "47" },
+          { subject: "Economics", teacher: "Teacher Name", room: "52" },
+          { subject: "Science", teacher: "Teacher Name", room: "34" },
+          { subject: "Religious Edu.", teacher: "Teacher Name", room: "40" },
+          { subject: "Technology", teacher: "Teacher Name", room: "29" },
+        ],
+        // P6
+        [
+          { subject: "Geography", teacher: "Teacher Name", room: "24" },
+          { subject: "Economics", teacher: "Teacher Name", room: "52" },
+          { subject: "Religious Edu.", teacher: "Teacher Name", room: "40" },
+          { subject: "Music", teacher: "Teacher Name", room: "61" },
+          { subject: "Technology", teacher: "Teacher Name", room: "29" },
+        ],
+      ];
+
+      function createTimetableCell(subject, teacher, room) {
+        return `
+                <div class="p-3 max-lg:p-2 max-sm:p-1 flex flex-col gap-4 max-lg:gap-2 max-md:rounded-[6px] rounded-[10px] ${
+                  subjects[subject] || "bg-gray-600"
+                } ${
+          subject == "Rg" ? "border border-[#b3b3b399] text-rg mb-[10px]" : ""
+        } ">
+                    <div class="text-base max-lg:text-xs ">${subject}</div>
+                    <div class=" w-full flex max-lg:flex-col items-center max-lg:items-start justify-between">
+                        <div class="text-sm max-sm:text-[10px] leading-[12px] opacity-70 max-md:opacity-80">${teacher}</div>
+                        <div class="text-base max-sm:text-[10px] opacity-70 max-md:opacity-80 ">${room}</div>
+                    </div>
+                </div>
+            `;
+      }
+
+      function generateTimetable() {
+        let html = "";
+
+        timetable.forEach((row) => {
+          html += row
+            .map((cell) =>
+              createTimetableCell(cell.subject, cell.teacher, cell.room)
+            )
+            .join("");
+        });
+
+        document.getElementById("timetable1").innerHTML = html;
+        document.getElementById("timetable2").innerHTML = html;
+      }
+
+      generateTimetable();
+
+      function getGreeting() {
+        const hour = new Date().getHours();
+        if (hour >= 5 && hour < 12) return "Good Morning";
+        if (hour >= 12 && hour < 18) return "Good Afternoon";
+        if (hour >= 18 && hour < 22) return "Good Evening";
+        return "Good Night";
+      }
+
+      function getDayOfWeek() {
+        const days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        return days[new Date().getDay()];
+      }
+
+      function updateGreetings() {
+        const greetingElements = document.getElementsByClassName("greeting");
+        const dayElements = document.getElementsByClassName("day-of-week");
+
+        const currentGreeting = getGreeting();
+        const currentDay = getDayOfWeek();
+
+        for (let el of greetingElements) {
+          el.textContent = currentGreeting + ",";
+        }
+
+        for (let el of dayElements) {
+          el.textContent = currentDay;
+        }
+      }
+
+      // Initial update
+      updateGreetings();
+
+      // Update every minute (optional, in case the page is left open for a long time)
+      setInterval(updateGreetings, 60000);
+    </script>
+  </body>
+</html>
