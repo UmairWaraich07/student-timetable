@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>School Timetable</title>
+    <title>Doherty Aidan Timetable</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,6 +12,19 @@
       href="https://fonts.googleapis.com/css2?family=Cambria&family=Open+Sans&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16x16.png"
+    />
+
     <script>
       tailwind.config = {
         theme: {
@@ -35,6 +48,8 @@
               drama: "#FF6B00",
               rg: "",
               "timetable-bg": "#1b1b1b",
+              "active-day": "#FF0004",
+              "inactive-week": "rgba(255, 255, 255, 0.5)",
             },
           },
           fontFamily: {
@@ -61,7 +76,7 @@
 
       <!-- Main content of the hero section -->
       <header
-        class="relative z-10 max-w-[1280px] px-14 max-lg:px-8 max-md:px-6 max-sm:px-4 py-5 max-sm:py-3 mx-auto w-full flex items-center justify-between"
+        class="relative z-10 max-w-[1340px] px-14 max-lg:px-8 max-md:px-6 max-sm:px-4 py-5 max-sm:py-3 mx-auto w-full flex items-center justify-between"
       >
         <div class="flex items-center gap-2">
           <img
@@ -93,7 +108,7 @@
       </header>
 
       <div
-        class="relative z-10 mt-10 px-14 max-lg:px-8 max-md:px-6 max-sm:px-0 mx-auto"
+        class="relative z-10 mt-10 max-w-[1340px] px-14 max-lg:px-8 max-md:px-6 max-sm:px-0 mx-auto"
       >
         <div
           class="w-full relative h-[550px] max-sm:h-[350px] bg-hero-img bg-center max-sm:bg-right bg-cover bg-no-repeat sm:rounded-[24px] overflow-hidden"
@@ -144,11 +159,11 @@
 
     <!-- Timetable 1 -->
     <section
-      class="mt-16 max-w-[1280px] mx-auto px-14 max-lg:px-8 max-md:px-6 max-sm:px-0"
+      class="mt-16 max-w-[1340px] mx-auto px-14 max-lg:px-8 max-md:px-6 max-sm:px-0"
     >
       <h2 class="font-bold font-cambria text-[42px] max-sm:px-4">Week 1</h2>
       <div class="mt-10 p-4 max-md:p-0">
-        <div class="grid grid-cols-5 gap-2 mb-2">
+        <div class="grid grid-cols-5 gap-2 mb-2" id="dayHeaders1">
           <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
             Mon
           </div>
@@ -220,14 +235,14 @@
 
     <!-- Timetable 2 -->
     <section
-      class="relative mt-16 max-w-[1280px] mx-auto px-14 max-lg:px-8 max-md:px-6 max-sm:px-0"
+      class="relative mt-16 max-w-[1340px] mx-auto px-14 max-lg:px-8 max-md:px-6 max-sm:px-0"
     >
       <div
         class="absolute top-0 right-0 w-[500px] h-[400px] bg-champion-pattern opacity-50 bg-right bg-no-repeat z-[-1]"
       ></div>
       <h2 class="font-bold font-cambria text-[42px] max-sm:px-4">Week 2</h2>
       <div class="mt-10 p-4 max-md:p-0">
-        <div class="grid grid-cols-5 gap-2 mb-2">
+        <div class="grid grid-cols-5 gap-2 mb-2" id="dayHeaders2">
           <div class="text-center p-2 text-[22px] max-md:text-base font-medium">
             Mon
           </div>
@@ -297,10 +312,13 @@
       </div>
     </section>
 
+    <div id="weekIndicator1" class="mb-4 text-xl font-bold hidden"></div>
+    <div id="weekIndicator2" class="mb-4 text-xl font-bold hidden"></div>
+
     <!-- Champion section -->
     <div class="pt-20 relative">
       <div
-        class="max-w-[1280px] mx-auto px-14 max-lg:px-8 max-md:px-6 max-sm:px-4"
+        class="max-w-[1340px] mx-auto px-14 max-lg:px-8 max-md:px-6 max-sm:px-4"
       >
         <div
           class="mt-16 max-sm:mt-10 px-6 max-sm:px-5 max-md:pb-10 min-h-[230px] bg-primary flex max-md:flex-col max-md:gap-8 items-center justify-center rounded-t-[24px] overflow-hidden"
@@ -319,12 +337,17 @@
 
         <!-- Background image with reduced opacity -->
         <div
-          class="absolute inset-0 w-full h-full bg-champion-pattern bg-bottom bg-right bg-no-repeat opacity-50 z-[-1]"
+          class="absolute inset-0 w-full h-full bg-champion-pattern bg-right bg-no-repeat opacity-50 z-[-1]"
         ></div>
       </div>
     </div>
 
     <script>
+      let currentWeek;
+
+      let startDate = "2024-09-02"; // 'YYYY-MM-DD'
+      let startingWeek = 1; // 1 for Week 1, 2 for Week 2
+
       const subjects = {
         Economics: "bg-home-economics",
         Technology: "bg-technology",
@@ -483,8 +506,69 @@
       // Initial update
       updateGreetings();
 
-      // Update every minute (optional, in case the page is left open for a long time)
-      setInterval(updateGreetings, 60000);
+      function updateWeekIndicators() {
+        const weekIndicator1 = document.getElementById("weekIndicator1");
+        const weekIndicator2 = document.getElementById("weekIndicator2");
+
+        if (currentWeek === 1) {
+          weekIndicator1.textContent = "Current Week: Active";
+          weekIndicator2.textContent = "Current Week: Inactive";
+          document.getElementById("timetable2").classList.add("opacity-50");
+          document.getElementById("timetable1").classList.remove("opacity-50");
+        } else {
+          weekIndicator1.textContent = "Current Week: Inactive";
+          weekIndicator2.textContent = "Current Week: Active";
+          document.getElementById("timetable1").classList.add("opacity-50");
+          document.getElementById("timetable2").classList.remove("opacity-50");
+        }
+      }
+
+      function highlightActiveDay() {
+        const today = new Date();
+        const dayOfWeek = today.getDay();
+        const dayHeaders1 = document.getElementById("dayHeaders1").children;
+        const dayHeaders2 = document.getElementById("dayHeaders2").children;
+
+        for (let i = 0; i < 5; i++) {
+          dayHeaders1[i].classList.remove("bg-active-day");
+          dayHeaders2[i].classList.remove("bg-active-day");
+        }
+
+        if (dayOfWeek > 0 && dayOfWeek < 6) {
+          if (currentWeek === 1) {
+            dayHeaders1[dayOfWeek - 1].classList.add("bg-active-day");
+          } else {
+            dayHeaders2[dayOfWeek - 1].classList.add("bg-active-day");
+          }
+        }
+      }
+
+      function updateTimetables() {
+        const today = new Date();
+        const diffTime = today - startDate;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        const weeksPassed = Math.floor(diffDays / 7);
+        currentWeek = (startingWeek + weeksPassed) % 2 || 2;
+
+        updateWeekIndicators();
+        highlightActiveDay();
+      }
+
+      function setStartDate(date, week) {
+        startDate = new Date(date);
+        startingWeek = week;
+        currentWeek = startingWeek;
+        updateTimetables();
+      }
+
+      generateTimetable("timetable1");
+      generateTimetable("timetable2");
+
+      // Set initial start date and week (you can change this to any date and week)
+      setStartDate(startDate, startingWeek);
+
+      // Update timetables every minute
+      setInterval(updateTimetables, 60000);
     </script>
   </body>
 </html>
