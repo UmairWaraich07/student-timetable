@@ -37,6 +37,9 @@
               ethics: "#9E69FF",
               mathematics: "#DE413E",
               english: "#1792F5",
+              "information-tech": "#2e9df6",
+              "physical-edu": "#A89A8E",
+              "financial-plan": "#d1d1d1",
               art: "#FF7043",
               irish: "#8537CA",
               history: "#C94814",
@@ -163,31 +166,31 @@
     >
       <h2 class="font-bold font-cambria text-[42px] max-sm:px-4">Week 1</h2>
       <div class="mt-10 max-sm:mt-6 p-4 max-md:p-0">
-        <div class="grid grid-cols-5 gap-2 mb-2" id="dayHeaders1">
+        <div class="md:ml-14 grid grid-cols-5 gap-2 mb-2" id="dayHeaders1">
           <div
             class="text-center p-2 text-[22px] max-md:text-base font-medium rounded-[6px]"
           >
-            Mon
+            1Mon
           </div>
           <div
             class="text-center p-2 text-[22px] max-md:text-base font-medium rounded-[6px]"
           >
-            Tue
+            1Tue
           </div>
           <div
             class="text-center p-2 text-[22px] max-md:text-base font-medium rounded-[6px]"
           >
-            Wed
+            1Wed
           </div>
           <div
             class="text-center p-2 text-[22px] max-md:text-base font-medium rounded-[6px]"
           >
-            Thu
+            1Thu
           </div>
           <div
             class="text-center p-2 text-[22px] max-md:text-base font-medium rounded-[6px]"
           >
-            Fri
+            1Fri
           </div>
         </div>
         <div class="flex items-center justify-center">
@@ -253,27 +256,27 @@
           <div
             class="text-center p-2 text-[22px] max-md:text-base font-medium rounded-[6px]"
           >
-            Mon
+            2Mon
           </div>
           <div
             class="text-center p-2 text-[22px] max-md:text-base font-medium rounded-[6px]"
           >
-            Tue
+            2Tue
           </div>
           <div
             class="text-center p-2 text-[22px] max-md:text-base font-medium rounded-[6px]"
           >
-            Wed
+            2Wed
           </div>
           <div
             class="text-center p-2 text-[22px] max-md:text-base font-medium rounded-[6px]"
           >
-            Thu
+            2Thu
           </div>
           <div
             class="text-center p-2 text-[22px] max-md:text-base font-medium rounded-[6px]"
           >
-            Fri
+            2Fri
           </div>
         </div>
         <div class="flex items-center justify-center">
@@ -370,7 +373,11 @@
         Technology: "bg-technology",
         "Ethics & Phil.": "bg-ethics",
         Mathematics: "bg-mathematics",
+        Math: "bg-mathematics",
         English: "bg-english",
+        "Financial Plan.": "bg-financial-plan",
+        "Physical Edu.": "bg-physical-edu",
+        "Information Tech.": "bg-information-tech",
         Art: "bg-art",
         Irish: "bg-irish",
         History: "bg-history",
@@ -383,7 +390,7 @@
         Rg: "bg-rg",
       };
 
-      const timetable = [
+      const timetableWeek1 = [
         // RgA
         [
           { subject: "Rg", teacher: "RMG", room: "32" },
@@ -450,6 +457,73 @@
         ],
       ];
 
+      const timetableWeek2 = [
+        // RgA
+        [
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+        ],
+        // P1
+        [
+          { subject: "Math", teacher: "SFO", room: "14" },
+          { subject: "Information Tech.", teacher: "ETO", room: "56" },
+          { subject: "Science", teacher: "CDY", room: "34" },
+          { subject: "Physical Edu.", teacher: "JMK", room: "GYM" },
+          { subject: "Math", teacher: "SFO", room: "14" },
+        ],
+        // P2
+        [
+          { subject: "Drama", teacher: "SMC", room: "43B" },
+          { subject: "English", teacher: "WMA", room: "LEARNING I" },
+          { subject: "Geography", teacher: "PON", room: "24" },
+          { subject: "Physical Edu.", teacher: "JMK", room: "GYM" },
+          { subject: "Information Tech.", teacher: "HLI", room: "40" },
+        ],
+        // P3
+        [
+          { subject: "Science", teacher: "CDY", room: "34" },
+          { subject: "French", teacher: "GMC", room: "47" },
+          { subject: "Music", teacher: "PGA", room: "61" },
+          { subject: "Science", teacher: "CDY", room: "34" },
+          { subject: "Religious Edu.", teacher: "HLI", room: "40" },
+        ],
+        // P4
+        [
+          { subject: "Music", teacher: "PGA", room: "61" },
+          { subject: "Religious Edu.", teacher: "HLI", room: "40" },
+          { subject: "History", teacher: "MGL", room: "23" },
+          { subject: "Irish", teacher: "ARA", room: "26" },
+          { subject: "Art", teacher: "EHU", room: "4" },
+        ],
+        // RgB
+        [
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+          { subject: "Rg", teacher: "RMG", room: "32" },
+        ],
+        // P5
+        [
+          { subject: "Information Tech.", teacher: "HLI", room: "54" },
+          { subject: "Geography", teacher: "PON", room: "24" },
+          { subject: "English", teacher: "AND", room: "45A" },
+          { subject: "Math", teacher: "SFO", room: "14" },
+          { subject: "Physical Edu.", teacher: "JMK", room: "GYM" },
+        ],
+        // P6
+        [
+          { subject: "English", teacher: "AND", room: "45A" },
+          { subject: "Math", teacher: "SFO", room: "14" },
+          { subject: "Irish", teacher: "ARA", room: "26" },
+          { subject: "History", teacher: "MGI", room: "23" },
+          { subject: "Financial Plan.", teacher: "ARA", room: "26" },
+        ],
+      ];
+
       function createTimetableCell(subject, teacher, room) {
         return `
                 <div class="p-3 max-lg:p-2 max-sm:p-1 flex flex-col gap-4 max-lg:gap-2 max-md:rounded-[3px] rounded-[10px] ${
@@ -468,10 +542,10 @@
             `;
       }
 
-      function generateTimetable() {
+      function generateTimetable(timetableId, timetableData) {
         let html = "";
 
-        timetable.forEach((row) => {
+        timetableData.forEach((row) => {
           html += row
             .map((cell) =>
               createTimetableCell(cell.subject, cell.teacher, cell.room)
@@ -479,11 +553,8 @@
             .join("");
         });
 
-        document.getElementById("timetable1").innerHTML = html;
-        document.getElementById("timetable2").innerHTML = html;
+        document.getElementById(timetableId).innerHTML = html;
       }
-
-      generateTimetable();
 
       function getGreeting() {
         const hour = new Date().getHours();
@@ -564,7 +635,8 @@
 
       function updateTimetables() {
         const today = new Date();
-        const diffTime = today - startDate;
+        const start = new Date(startDate);
+        const diffTime = today - start;
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
         const weeksPassed = Math.floor(diffDays / 7);
         currentWeek = (startingWeek + weeksPassed) % 2 || 2;
@@ -580,8 +652,8 @@
         updateTimetables();
       }
 
-      generateTimetable("timetable1");
-      generateTimetable("timetable2");
+      generateTimetable("timetable1", timetableWeek1);
+      generateTimetable("timetable2", timetableWeek2);
 
       // Set initial start date and week (you can change this to any date and week)
       setStartDate(startDate, startingWeek);
